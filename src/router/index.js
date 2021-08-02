@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Start from '../pages/Start.vue'
+
 import Information from '../pages/Information.vue'
+import Story from '../pages/Story.vue'
+import Credit from '../pages/Credit.vue'
+import Setting from '../pages/Setting.vue'
 
 Vue.use(VueRouter)
 
