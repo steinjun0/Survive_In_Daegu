@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <div><router-link to="/">뒤로가기</router-link></div>
       <h1>게임설명</h1>
+      <div id="back"><router-link to="/">뒤로가기</router-link></div>
     </div>
     <div id="abc">
       <p>가 0이 되면 사망합니다.</p>
@@ -25,10 +25,19 @@ export default {
 h1 {
   font-size: 40px;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
+  margin: 0px;
   color: black;
 }
 #abc {
   flex-direction: column;
+  padding: 50px;
+}
+#back {
+  text-align: left;
+  color: black;
+  text-decoration: none;
+  border-bottom: solid gray 4px;
+  padding-bottom: 10px;
 }
 </style>
