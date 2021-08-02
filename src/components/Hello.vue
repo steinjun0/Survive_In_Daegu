@@ -4,7 +4,7 @@
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ol>
-      <li><router-link to="/foo">Go to Foo</router-link></li>
+      <li><router-link to="/information">Go to Foo</router-link></li>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
       <li>

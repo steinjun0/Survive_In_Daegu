@@ -1,21 +1,15 @@
 {
   "name": "sid",
   "version": "0.1.0",
+  "private": true,
   "description": "A Vue.js project",
   "author": "duck",
-  "private": true,
   "scripts": {
-    "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
     "serve": "http-server -o -c 1 -a 0.0.0.0",
-    "dev": "npm-run-all --parallel watchify serve",
+    "build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o dist/build.css ] -e src/main.js | uglifyjs -c warnings=false -m > dist/build.js",
     "lint": "vue-cli-service lint",
-    "build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o dist/build.css ] -e src/main.js | uglifyjs -c warnings=false -m > dist/build.js"
-  },
-  "browserify": {
-    "transform": [
-      "babelify",
-      "vueify"
-    ]
+    "dev": "npm-run-all --parallel watchify serve",
+    "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
@@ -28,7 +22,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.9",
     "@vue/cli-plugin-eslint": "~4.5.9",
-    "@vue/cli-plugin-router": "~4.5.9",
+    "@vue/cli-plugin-router": "^4.5.13",
     "@vue/cli-plugin-vuex": "~4.5.9",
     "@vue/cli-service": "~4.5.9",
     "@vue/eslint-config-airbnb": "^5.3.0",
@@ -56,5 +50,11 @@
     "uglify-js": "^2.5.0",
     "vueify": "^9.0.0",
     "watchify": "^3.4.0"
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "vueify"
+    ]
   }
 }
