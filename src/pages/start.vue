@@ -16,11 +16,11 @@ export default {};
 
 <style>
 .title {
-  font-size: 46px;
+  font-size: 100px;
   color: red;
-  line-height: 300px;
+  line-height: 260px;
 }
 .menu {
-  font-size: 30px;
+  font-size: 50px;
 }
 </style>
