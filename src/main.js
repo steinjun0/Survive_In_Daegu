@@ -4,7 +4,7 @@
 import Vue from 'vue'
 // import VueRouter from 'vue-router'
 import App from './App.vue'
-import information from './pages/information.vue'
+import Information from './pages/Information.vue'
 import router from './router'
 // Vue.use(VueRouter)
 // 0. 모듈 시스템 (예: vue-cli)을 이용하고 있다면, Vue와 Vue 라우터를 import 하세요

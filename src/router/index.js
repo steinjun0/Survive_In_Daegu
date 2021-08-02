@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Start from '../pages/Start.vue'
-import Information from '../pages/information.vue'
+import Information from '../pages/Information.vue'
 
 Vue.use(VueRouter)
 
@@ -12,7 +12,7 @@ const routes = [
     component: Start
   },
   {
-    path: '/information',
+    path: '/Information',
     name: 'Information',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
