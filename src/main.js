@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
+import information from './pages/information.vue'
 Vue.use(VueRouter)
 // 0. 모듈 시스템 (예: vue-cli)을 이용하고 있다면, Vue와 Vue 라우터를 import 하세요
 // 그리고 `Vue.use(VueRouter)`를 호출하세요
@@ -26,7 +27,13 @@ const router = new VueRouter({
       path: '/',
       name: 'Home',
       component: App
-    }]  
+    },
+    {
+      path: '/information',
+      name: 'information',
+      component: information
+    }
+  ]
 })
 
 // 3. `routes` 옵션과 함께 router 인스턴스를 만드세요.
@@ -46,10 +53,8 @@ new Vue({ // eslint-disable-line no-new
 
 export default router
 
-// const app = new Vue({
+// new Vue({
 //   router
 // }).$mount('#app')
 
 // Vue.use(router)
-
-// 이제 앱이 시작됩니다!
