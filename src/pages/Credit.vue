@@ -28,7 +28,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1 {
   font-size: 40px;
   text-align: center;
