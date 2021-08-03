@@ -18,8 +18,8 @@ export class Point {
     this.centerDy = y - this.stageHeight / 2;
   }
   setCenterPos(centerDx, centerDy) {
-    this.x = stageWidth / 2 + centerDx;
-    this.y = stageHeight / 2 + centerDy;
+    this.x = this.stageWidth / 2 + centerDx;
+    this.y = this.stageHeight / 2 + centerDy;
     this.centerDx = centerDx;
     this.centerDy = centerDy;
   }
