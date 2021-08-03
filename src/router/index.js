@@ -7,6 +7,7 @@ import Information from "../pages/Information.vue";
 import Credit from "../pages/Credit.vue";
 import Fps from "../components/Fps.vue";
 // import Setting from "../pages/Setting.vue";
+import Death from "../pages/Death.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/fps",
     name: "Fps",
     component: Fps,
+  },
+  {
+    path: "/death",
+    name: "Death",
+    component: Death,
   },
 ];
 
