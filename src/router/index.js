@@ -9,6 +9,8 @@ import Fps from "../components/Fps.vue";
 import Setting from "../pages/Setting.vue";
 // import Setting from "../pages/Setting.vue";
 import Death from "../pages/Death.vue";
+import Story from "../pages/Story.vue";
+import Game from "../pages/Game.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +47,16 @@ const routes = [
     path: "/death",
     name: "Death",
     component: Death,
+  },
+  {
+    path: "/story",
+    name: "Story",
+    component: Story,
+  },
+  {
+    path: "/game",
+    name: "Game",
+    component: Game,
   },
 ];
 
