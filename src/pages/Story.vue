@@ -14,6 +14,14 @@
         {{ text }}
       </div>
     </v-col>
+    <v-col
+      class="d-flex justify-end"
+      style="font-size: 20px; padding-right: 20px"
+      >게임 시작하기
+      <router-link to="/Game" style="text-decoration: none"
+        ><v-icon large>mdi-google-controller</v-icon></router-link
+      >
+    </v-col>
   </v-row>
 </template>
 
