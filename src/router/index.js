@@ -30,7 +30,7 @@ const routes = [
     component: Credit,
   },
   {
-    path: "/story",
+    path: "/fps",
     name: "Fps",
     component: Fps,
   },
