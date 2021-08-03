@@ -5,6 +5,7 @@ import Start from "../pages/Start.vue";
 import Information from "../pages/Information.vue";
 // import Story from "../pages/Story.vue";
 import Credit from "../pages/Credit.vue";
+import Fps from "../components/Fps.vue";
 // import Setting from "../pages/Setting.vue";
 
 Vue.use(VueRouter);
@@ -16,7 +17,7 @@ const routes = [
     component: Start,
   },
   {
-    path: "/Information",
+    path: "/information",
     name: "Information",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -24,9 +25,14 @@ const routes = [
     component: Information,
   },
   {
-    path: "/Credit",
+    path: "/credit",
     name: "Credit",
     component: Credit,
+  },
+  {
+    path: "/story",
+    name: "Fps",
+    component: Fps,
   },
 ];
 
