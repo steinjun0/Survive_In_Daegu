@@ -11,6 +11,7 @@ import Setting from "../pages/Setting.vue";
 import Death from "../pages/Death.vue";
 import Story from "../pages/Story.vue";
 import Game from "../pages/Game.vue";
+import Tictacto from "../components/Tictacto.vue"
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [
     path: "/game",
     name: "Game",
     component: Game,
+  },
+  {
+    path: "/tictacto",
+    name: "Tictacto",
+    component: Tictacto,
   },
 ];
 
