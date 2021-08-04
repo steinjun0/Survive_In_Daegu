@@ -12,6 +12,7 @@ import Death from "../pages/Death.vue";
 import Story from "../pages/Story.vue";
 import Game from "../pages/Game.vue";
 import Tictacto from "../components/Tictacto.vue"
+import Gugudan from "../components/Gugudan.vue"
 
 Vue.use(VueRouter);
 
@@ -63,6 +64,11 @@ const routes = [
     path: "/tictacto",
     name: "Tictacto",
     component: Tictacto,
+  },
+  {
+    path: "/gugudan",
+    name: "Gugudan",
+    component: Gugudan,
   },
 ];
 

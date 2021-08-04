@@ -83,12 +83,7 @@ export default {
       } else if (this.countDown === 0) {
         this.countDown = 10;
         this.goal = 0;
-        if (this.countDown > 0) {
-          setTimeout(() => {
-            this.countDown -= 1;
-            this.countDownTimer();
-          }, 1000);
-        }
+        this.countDownTimer();
       }
     },
     isNumeric(data) {
