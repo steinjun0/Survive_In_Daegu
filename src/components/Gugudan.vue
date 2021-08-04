@@ -32,6 +32,7 @@
             :counter="10"
             label="answer"
             required
+            @keydown.enter="submitanswer"
           ></v-text-field>
         </div>
         <div>
@@ -44,6 +45,7 @@
           </v-btn>
         </div>
         <div id="result" style="font-size: 25px">{{ result }}</div>
+        <div id="goal">{{ goal }}/5</div>
       </v-col>
     </v-row>
   </div>
@@ -62,6 +64,7 @@ export default {
         (v) => !!v || "정답을 적으세요!",
         (v) => this.isNumeric(v) || "숫자만 쓰세요!",
       ],
+      goal: 0,
     };
   },
   mounted() {},
@@ -70,18 +73,28 @@ export default {
       return !isNaN(data);
     },
     submitanswer() {
-      console.log;
-      if (this.number * this.number2 === parseInt(this.answer)) {
+      if (this.goal >= 5) {
+        this.$router.push("/Game");
+      } else if (this.number * this.number2 === parseInt(this.answer)) {
         this.result = "딩동댕!";
+        this.goal += 1;
         this.number = Math.ceil(Math.random() * 9);
         this.number2 = Math.ceil(Math.random() * 9);
         this.answer = "";
         this.$refs.answer.focus();
       } else {
+        this.goal = 0;
         this.result = "땡!";
         this.answer = "";
         this.$refs.answer.focus();
       }
+    },
+    submitgoal() {
+      // if (this.number * this.number2 === parseInt(this.answer)){
+      //   (this.paragraphIndex < 1) {
+      //   this.paragraphIndex = this.paragraphIndex + 1
+      // }
+      // }
     },
   },
 };
