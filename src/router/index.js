@@ -11,6 +11,7 @@ import Setting from "../pages/Setting.vue";
 import Death from "../pages/Death.vue";
 import Story from "../pages/Story.vue";
 import Game from "../pages/Game.vue";
+import Gugudan from "../components/Gugudan.vue";
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [
     path: "/game",
     name: "Game",
     component: Game,
+  },
+  {
+    path: "/gugudan",
+    name: "Gugudan",
+    component: Gugudan,
   },
 ];
 
