@@ -15,11 +15,6 @@ import { Monster } from "./Fps/monster.js";
 // import { Circle } from "./circle.js";
 export default {
   data() {
-    let imgs = [];
-    for (let i = 0; i < 23; i++) {
-      imgs[i] = new Image(); // Create new img element
-      imgs[i].src = require(`@/assets/shuckshushuck/shuckshushuck-${i}.png`);
-    }
     return {
       canvas: "",
       ctx: "",
@@ -27,9 +22,13 @@ export default {
       stageWidth: 100,
       stageHeight: 100,
       monsters: [],
-      monsterNum: 5,
-      monsterPositions: [],
-      imgs,
+      monsterPositions: [
+        [0, 0],
+        [100, 100],
+        [500, 0],
+        [250, 0],
+        [300, 10],
+      ],
     };
   },
   mounted() {
@@ -43,19 +42,22 @@ export default {
     this.ctx.beginPath();
     this.ctx.arc(100, 100, 10, 0, 2 * Math.PI);
     this.ctx.fill();
+
     this.mouse = new Mouse(this.stageWidth, this.stageHeight);
 
+    for (let i = 0; i < 5; i++) {
+      this.monsters[i] = new Monster(
+        this.stageWidth,
+        this.stageHeight,
+        this.monsterPositions[i][0],
+        this.monsterPositions[i][1]
+      );
+    }
     // this.monster = new Monster(this.stageWidth, this.stageHeight);
     window.addEventListener("resize", this.resize.bind(this), false);
     this.resize();
 
     window.requestAnimationFrame(this.animate.bind(this));
-
-    document.addEventListener(
-      "pointerdown",
-      this.eliminateEnemy.bind(this),
-      false
-    );
 
     document.addEventListener(
       "pointerdown",
@@ -89,26 +91,6 @@ export default {
     //   ),
     //   false
     // );
-    this.monsterPositions = [
-      [Math.random() * 1000 - 500, -300],
-      [Math.random() * 1000 - 500, -600],
-      [Math.random() * 100000 - 500, -90000],
-      [Math.random() * 1000 - 500, 100],
-      [Math.random() * 1000 - 500, 0],
-    ];
-    // this.monsterPositions = this.monsterPositions.slice(2);
-
-    for (let i = 0; i < this.monsterNum; i++) {
-      this.monsters[i] = new Monster(
-        this.stageWidth,
-        this.stageHeight,
-        this.monsterPositions[i][0],
-        this.monsterPositions[i][1]
-      );
-      if (i == 2) {
-        this.monsters[i].velocity = 1 / 30;
-      }
-    }
   },
   methods: {
     resize() {
@@ -117,7 +99,6 @@ export default {
       this.stageHeight = this.wrapper.clientWidth * (9 / 16);
       this.canvas.width = this.stageWidth;
       this.canvas.height = this.stageHeight;
-      this.mouse.resize(this.stageWidth, this.stageHeight);
       // this.ctx.scale(1, 1);
     },
     animate() {
@@ -129,39 +110,25 @@ export default {
         this.stageHeight * 2
       );
 
-      for (let i = 0; i < this.monsterNum; i++) {
+      for (let i = 0; i < 5; i++) {
         this.ctx.beginPath();
-        this.ctx.fillStyle = "#ffff0055";
-        this.ctx.drawImage(
-          this.imgs[this.monsters[i].gifIndex],
-          this.monsters[i].pos.x - this.monsters[i].size / 2,
-          this.monsters[i].pos.y - this.monsters[i].size / 2,
-          this.monsters[i].size,
-          this.monsters[i].size
-        );
+        this.ctx.fillStyle = "#ff0000";
         this.ctx.arc(
           this.monsters[i].pos.x,
           this.monsters[i].pos.y,
-          this.monsters[i].size / 8,
+          this.monsters[i].size,
           0,
           2 * Math.PI
         );
         this.ctx.fill();
-        // this.monsters[i].size += 1;
+        this.monsters[i].size += 1;
         this.monsters[i].move(this.stageWidth / 2, this.stageHeight);
-        if (this.monsters[i].pos.y > this.stageHeight * 0.8) {
-          this.monsters[i].eliminated = true;
-        }
       }
-      this.ctx.strokeStyle = "#FF0000";
-      this.ctx.beginPath();
-      this.ctx.moveTo(0, this.stageHeight * 0.8);
-      this.ctx.lineTo(this.stageWidth, this.stageHeight * 0.8);
-      this.ctx.stroke();
+
       this.ctx.fillStyle = "#00ff00";
       this.ctx.beginPath();
       this.ctx.arc(
-        this.mouse.mousePos.x,
+        this.mouse.mousePos.x - this.stageWidth / 8,
         this.mouse.mousePos.y,
         5,
         0,
@@ -177,15 +144,6 @@ export default {
         2 * Math.PI
       );
       this.ctx.fill();
-    },
-    eliminateEnemy(e) {
-      for (let i = 0; i < this.monsterNum; i++) {
-        if (
-          this.monsters[i].isClicked(e.clientX - this.stageWidth / 8, e.clientY)
-        ) {
-          this.monsters[i].eliminated = true;
-        }
-      }
     },
   },
 };
