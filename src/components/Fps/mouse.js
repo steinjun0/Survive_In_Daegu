@@ -19,8 +19,12 @@ export class Mouse {
     this.isMouseClicked = false;
     this.ctxOrigin = { x: 0, y: 0 };
   }
+  resize(stageWidth,stageHeight){
+    this.stageWidth = stageWidth;
+    this.stageHeight = stageHeight;
+  }
   onDown(e) {
-    this.mouseClickPos.setPos(e.clientX, e.clientY);
+    this.mouseClickPos.setPos(e.clientX - this.stageWidth / 8, e.clientY);
     this.isMouseClicked = true;
   }
 
@@ -33,7 +37,7 @@ export class Mouse {
       // let dy = e.clientY - this.mousePrevPos.y;
       // dx /= ctx.getTransform().a;
       // dy /= ctx.getTransform().a;
-      this.mousePos.setPos(e.clientX, e.clientY);
+      this.mousePos.setPos(e.clientX - this.stageWidth / 8, e.clientY);
       // console.log('mousePos', this.mousePos)
       // console.log('this.mousePrevPos.x;',this.mousePrevPos.x)
       // this.ctxOrigin = { x: this.ctxOrigin.x + dx, y: this.ctxOrigin.y + dy };
