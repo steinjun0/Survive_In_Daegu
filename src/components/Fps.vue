@@ -10,16 +10,26 @@
           ></canvas>
         </div>
       </v-col>
-      <v-col cols="12" class="d-flex align-center">
-        <span style="font-size: 24px; margin-bottom: -4px"> LIFE: </span>
-        <v-icon
-          v-for="index in life"
-          :key="index"
-          size="36"
-          style="margin-bottom: -4px"
-          color="red"
-          >mdi-heart</v-icon
+      <v-col cols="12" class="d-flex justify-center">
+        <div
+          class="d-flex align-center justify-space-between"
+          style="width: 80%"
         >
+          <div>
+            <span style="font-size: 24px; margin-bottom: -4px"> LIFE: </span>
+            <v-icon
+              v-for="index in life"
+              :key="index"
+              size="36"
+              style="margin-bottom: -4px"
+              color="red"
+              >mdi-heart</v-icon
+            >
+          </div>
+          <div>
+            <v-icon v-if="isFinished && life > 0">mdi-arrow-right</v-icon>
+          </div>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -48,6 +58,7 @@ export default {
       monsterVelocities: [],
       imgs,
       life: 3,
+      isFinished: false,
     };
   },
   mounted() {
@@ -103,14 +114,14 @@ export default {
     this.monsterPositions = [
       [Math.random() * 1000 - 500, -300],
       [Math.random() * 1000 - 500, -600],
-      [Math.random() * 3000 - 500, -90000],
       [Math.random() * 1000 - 500, -500],
       [Math.random() * 1000 - 500, -900],
       [Math.random() * 1000 - 500, -900],
-      [Math.random() * 2000 - 500, -1500],
-      [Math.random() * 2000 - 500, -5000],
-      [Math.random() * 2000 - 500, -1000],
+      [Math.random() * 2000 - 500, -150],
+      [Math.random() * 2000 - 500, -500],
+      [Math.random() * 2000 - 500, -100],
       [Math.random() * 2000 - 500, -750],
+      [Math.random() * 3000 - 500, -900],
     ];
     this.monsterDestinationPositions = [
       -300, -600, -90000, -500, -900, -900, -1500, -5000, -1000, -750,
@@ -178,7 +189,9 @@ export default {
           this.stageHeight
         );
         if (this.monsters[i].pos.y > this.stageHeight * 0.8) {
+          // this.$set(this.monsters[i], "eliminated", true);
           this.monsters[i].eliminated = true;
+          if (i === this.monsters.length - 1) this.isFinished = true;
           if (this.life > 0) this.life -= 1;
           console.log(Math.floor(255 * (1 - this.life / 3)).toString(16));
           this.canvas.style.backgroundColor = `#ff0000${Math.floor(
@@ -200,15 +213,7 @@ export default {
         0,
         2 * Math.PI
       );
-      // this.ctx.arc(
-      //   (this.stageWidth / 2 - this.ctx.getTransform().e) /
-      //     this.ctx.getTransform().d,
-      //   (this.stageHeight / 2 - this.ctx.getTransform().f) /
-      //     this.ctx.getTransform().d,
-      //   5,
-      //   0,
-      //   2 * Math.PI
-      // );
+
       this.ctx.fill();
     },
     eliminateEnemy(e) {
@@ -216,7 +221,8 @@ export default {
         if (
           this.monsters[i].isClicked(e.clientX - this.stageWidth / 8, e.clientY)
         ) {
-          this.monsters[i].eliminated = true;
+          this.$set(this.monsters[i], "eliminated", true);
+          if (i === this.monsters.length - 1) this.isFinished = true;
         }
       }
     },
