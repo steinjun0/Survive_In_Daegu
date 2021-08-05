@@ -1,12 +1,27 @@
 <template>
   <div class="d-flex justify-center" style="width: 100%">
     <!-- <div>fps</div> -->
-    <div id="canvas-wrapper" style="width: 80%">
-      <canvas
-        id="fps-canvas"
-        style="background-color: rgba(0, 0, 0, 0.5)"
-      ></canvas>
-    </div>
+    <v-row>
+      <v-col cols="12" class="d-flex justify-center">
+        <div id="canvas-wrapper" style="width: 80%">
+          <canvas
+            id="fps-canvas"
+            style="background-color: rgba(0, 0, 0, 0.5)"
+          ></canvas>
+        </div>
+      </v-col>
+      <v-col cols="12" class="d-flex align-center">
+        <span style="font-size: 24px; margin-bottom: -4px"> LIFE: </span>
+        <v-icon
+          v-for="index in life"
+          :key="index"
+          size="36"
+          style="margin-bottom: -4px"
+          color="red"
+          >mdi-heart</v-icon
+        >
+      </v-col>
+    </v-row>
   </div>
 </template>
 <script>
@@ -27,9 +42,12 @@ export default {
       stageWidth: 100,
       stageHeight: 100,
       monsters: [],
-      monsterNum: 5,
+      monsterNum: 10,
       monsterPositions: [],
+      monsterDestinationPositions: [],
+      monsterVelocities: [],
       imgs,
+      life: 3,
     };
   },
   mounted() {
@@ -92,9 +110,30 @@ export default {
     this.monsterPositions = [
       [Math.random() * 1000 - 500, -300],
       [Math.random() * 1000 - 500, -600],
-      [Math.random() * 100000 - 500, -90000],
-      [Math.random() * 1000 - 500, 100],
-      [Math.random() * 1000 - 500, 0],
+      [Math.random() * 1000 - 500, -90000],
+      [Math.random() * 1000 - 500, -500],
+      [Math.random() * 1000 - 500, -900],
+      [Math.random() * 1000 - 500, -900],
+      [Math.random() * 1000 - 500, -1500],
+      [Math.random() * 1000 - 500, -5000],
+      [Math.random() * 1000 - 500, -1000],
+      [Math.random() * 1000 - 500, -750],
+    ];
+    this.monsterDestinationPositions = [
+      [Math.random() * this.stageWidth - 500, -300],
+      [Math.random() * this.stageWidth - 500, -600],
+      [Math.random() * this.stageWidth - 500, -90000],
+      [Math.random() * this.stageWidth - 500, -500],
+      [Math.random() * this.stageWidth - 500, -900],
+      [Math.random() * this.stageWidth - 500, -900],
+      [Math.random() * this.stageWidth - 500, -1500],
+      [Math.random() * this.stageWidth - 500, -5000],
+      [Math.random() * this.stageWidth - 500, -1000],
+      [Math.random() * this.stageWidth - 500, -750],
+    ];
+
+    this.monsterVelocities = [
+      0.005, 0.005, 0.015, 0.005, 0.005, 0.005, 0.015, 0.005, 0.015, 0.005,
     ];
     // this.monsterPositions = this.monsterPositions.slice(2);
 
@@ -105,10 +144,15 @@ export default {
         this.monsterPositions[i][0],
         this.monsterPositions[i][1]
       );
-      if (i == 2) {
-        this.monsters[i].velocity = 1 / 30;
-      }
+      this.monsters[i].velocity = 3;
     }
+  },
+  watch: {
+    life() {
+      if (this.life === 0) {
+        console.log("죽음");
+      }
+    },
   },
   methods: {
     resize() {
@@ -151,6 +195,11 @@ export default {
         this.monsters[i].move(this.stageWidth / 2, this.stageHeight);
         if (this.monsters[i].pos.y > this.stageHeight * 0.8) {
           this.monsters[i].eliminated = true;
+          if (this.life > 0) this.life -= 1;
+          console.log(Math.floor(255 * (1 - this.life / 3)).toString(16));
+          this.canvas.style.backgroundColor = `#ff0000${Math.floor(
+            255 * (1 - this.life / 3)
+          ).toString(16)}`;
         }
       }
       this.ctx.strokeStyle = "#FF0000";
