@@ -48,11 +48,14 @@
           >선택지 1. {{ firstItem }}
         </v-btn>
       </v-col>
-      <v-col cols="12" class="d-flex flex-start align-center">
+      <v-col cols="12" class="d-flex justify-space-between align-center">
         <v-btn
           style="margin-left: 48px; font-size: 24px"
           @click="selectBelonging(secondItem)"
           >선택지 2. {{ secondItem }}</v-btn
+        >
+        <v-btn style="margin-right: 48px; font-size: 24px" :to="'/random'"
+          >앞으로 나아간다.</v-btn
         >
       </v-col>
     </v-row>
