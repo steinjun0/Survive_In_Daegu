@@ -27,7 +27,11 @@
             >
           </div>
           <div>
-            <v-icon v-if="isFinished && life > 0">mdi-arrow-right</v-icon>
+            <router-link to="/Game"
+              ><v-icon v-if="isFinished && life > 0"
+                >mdi-arrow-right</v-icon
+              ></router-link
+            >
           </div>
         </div>
       </v-col>

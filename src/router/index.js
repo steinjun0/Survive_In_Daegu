@@ -18,6 +18,7 @@ import Random2 from "../pages/Random2.vue";
 import Random3 from "../pages/Random3.vue";
 import Random4 from "../pages/Random4.vue";
 import Random5 from "../pages/Random5.vue";
+import Beforefps from "../pages/Beforefps.vue";
 
 
 Vue.use(VueRouter);
@@ -97,6 +98,11 @@ const routes = [
     path: "/gugudan",
     name: "Gugudan",
     component: Gugudan,
+  },
+  {
+    path: "/beforefps",
+    name: "Beforefps",
+    component: Beforefps,
   },
 ];
 

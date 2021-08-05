@@ -40,8 +40,8 @@
     </v-row>
     <v-row style="border-top: solid gray 4px; height: 260px">
       <v-col cols="12" class="d-flex flex-start align-center">
-        <v-btn style="margin-left: 48px; font-size: 24px" :to="'/tictacto'">
-          틱택토..?
+        <v-btn style="margin-left: 48px; font-size: 24px" :to="'/fps'">
+          이 서늘한 감각... 오랜만이구만!
         </v-btn>
       </v-col>
     </v-row>
@@ -55,7 +55,7 @@ export default {
     return {
       storyText: [
         [
-          '당신은 지나가다가 외계인을 마주칩니다.\n"대구 여름 따뜻하다 대구 여름 따뜻하다." \n대구 사람은 알아들을수 없는 외계어입니다.\n아무래도 게임에서 이겨야 지나갈수 있을거같습니다.',
+          '당신은 무기고에서 총을 획득했습니다.\n기쁜마음으로 경찰서를 나올려는 순간\n좀비들이 에워싸기 시작합니다!\n"따뜻한 아이스아메리카노오오오"\n헛소리를 하는거보니 좀비가 맞습니다.\n경찰서를 거점으로 수비해야합니다.',
         ],
       ],
       paragraphIndex: 0,

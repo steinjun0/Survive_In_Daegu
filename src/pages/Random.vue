@@ -43,7 +43,7 @@
         <v-btn style="margin-left: 48px; font-size: 24px">들어간다. </v-btn>
       </v-col>
       <v-col cols="12" class="d-flex flex-start align-center">
-        <v-btn style="margin-left: 48px; font-size: 24px"
+        <v-btn style="margin-left: 48px; font-size: 24px" :to="'/random2'"
           >무시하고 지나간다.</v-btn
         >
       </v-col>
