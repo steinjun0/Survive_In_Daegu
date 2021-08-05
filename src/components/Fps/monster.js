@@ -10,9 +10,6 @@ export class Monster {
       y,
     );
     this.size = 10;
-    this.gifIndex = 0
-    this.eliminated = false
-    this.velocity = 1/100
   }
   move(destinationX, destinationY){
     // console.log('destinationX',destinationX)
@@ -31,8 +28,4 @@ export class Monster {
       this.pos.y = 0;
     }
   }
-  isClicked(x, y){
-    return (this.pos.x - x)*(this.pos.x - x) + (this.pos.y - y)*(this.pos.y - y) <= (this.size / 8)*(this.size / 8)
-  }
-
 }
