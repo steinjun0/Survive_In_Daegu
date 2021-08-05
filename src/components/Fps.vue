@@ -6,7 +6,7 @@
         <div id="canvas-wrapper" style="width: 80%">
           <canvas
             id="fps-canvas"
-            style="background-color: rgba(0, 0, 0, 0.5)"
+            style="background-color: rgba(0, 0, 0, 0.5); cursor: none"
           ></canvas>
         </div>
       </v-col>
@@ -200,15 +200,15 @@ export default {
         0,
         2 * Math.PI
       );
-      this.ctx.arc(
-        (this.stageWidth / 2 - this.ctx.getTransform().e) /
-          this.ctx.getTransform().d,
-        (this.stageHeight / 2 - this.ctx.getTransform().f) /
-          this.ctx.getTransform().d,
-        5,
-        0,
-        2 * Math.PI
-      );
+      // this.ctx.arc(
+      //   (this.stageWidth / 2 - this.ctx.getTransform().e) /
+      //     this.ctx.getTransform().d,
+      //   (this.stageHeight / 2 - this.ctx.getTransform().f) /
+      //     this.ctx.getTransform().d,
+      //   5,
+      //   0,
+      //   2 * Math.PI
+      // );
       this.ctx.fill();
     },
     eliminateEnemy(e) {
