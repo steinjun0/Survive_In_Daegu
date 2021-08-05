@@ -103,26 +103,17 @@ export default {
     this.monsterPositions = [
       [Math.random() * 1000 - 500, -300],
       [Math.random() * 1000 - 500, -600],
-      [Math.random() * 1000 - 500, -90000],
+      [Math.random() * 3000 - 500, -90000],
       [Math.random() * 1000 - 500, -500],
       [Math.random() * 1000 - 500, -900],
       [Math.random() * 1000 - 500, -900],
-      [Math.random() * 1000 - 500, -1500],
-      [Math.random() * 1000 - 500, -5000],
-      [Math.random() * 1000 - 500, -1000],
-      [Math.random() * 1000 - 500, -750],
+      [Math.random() * 2000 - 500, -1500],
+      [Math.random() * 2000 - 500, -5000],
+      [Math.random() * 2000 - 500, -1000],
+      [Math.random() * 2000 - 500, -750],
     ];
     this.monsterDestinationPositions = [
-      [Math.random() * this.stageWidth - 500, -300],
-      [Math.random() * this.stageWidth - 500, -600],
-      [Math.random() * this.stageWidth - 500, -90000],
-      [Math.random() * this.stageWidth - 500, -500],
-      [Math.random() * this.stageWidth - 500, -900],
-      [Math.random() * this.stageWidth - 500, -900],
-      [Math.random() * this.stageWidth - 500, -1500],
-      [Math.random() * this.stageWidth - 500, -5000],
-      [Math.random() * this.stageWidth - 500, -1000],
-      [Math.random() * this.stageWidth - 500, -750],
+      -300, -600, -90000, -500, -900, -900, -1500, -5000, -1000, -750,
     ];
     this.monsterVelocities = [
       0.005, 0.005, 0.015, 0.005, 0.005, 0.005, 0.015, 0.005, 0.015, 0.005,
@@ -182,7 +173,10 @@ export default {
         );
         this.ctx.fill();
         // this.monsters[i].size += 1;
-        this.monsters[i].move(this.stageWidth / 2, this.stageHeight);
+        this.monsters[i].move(
+          300 + Math.random() * this.stageWidth * 0.8,
+          this.stageHeight
+        );
         if (this.monsters[i].pos.y > this.stageHeight * 0.8) {
           this.monsters[i].eliminated = true;
           if (this.life > 0) this.life -= 1;
