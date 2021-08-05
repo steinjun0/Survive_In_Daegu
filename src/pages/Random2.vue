@@ -40,12 +40,9 @@
     </v-row>
     <v-row style="border-top: solid gray 4px; height: 260px">
       <v-col cols="12" class="d-flex flex-start align-center">
-        <v-btn style="margin-left: 48px; font-size: 24px">들어간다. </v-btn>
-      </v-col>
-      <v-col cols="12" class="d-flex flex-start align-center">
-        <v-btn style="margin-left: 48px; font-size: 24px" :to="'/random2'"
-          >무시하고 지나간다.</v-btn
-        >
+        <v-btn style="margin-left: 48px; font-size: 24px" :to="'/tictacto'">
+          틱택토..?
+        </v-btn>
       </v-col>
     </v-row>
   </div>
@@ -57,7 +54,9 @@ export default {
   data() {
     return {
       storyText: [
-        ["지나가다가 병원을 발견하였습니다.\n구급약을 구할수있을거같습니다."],
+        [
+          '당신은 지나가다가 외계인을 마주칩니다.\n"대구 여름 따뜻하다 대구 여름 따뜻하다." \n대구 사람은 알아들을수 없는 외계어입니다.\n아무래도 게임에서 이겨야 지나갈수 있을거같습니다.',
+        ],
       ],
       paragraphIndex: 0,
     };

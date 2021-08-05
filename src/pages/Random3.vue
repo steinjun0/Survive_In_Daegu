@@ -40,12 +40,9 @@
     </v-row>
     <v-row style="border-top: solid gray 4px; height: 260px">
       <v-col cols="12" class="d-flex flex-start align-center">
-        <v-btn style="margin-left: 48px; font-size: 24px">들어간다. </v-btn>
-      </v-col>
-      <v-col cols="12" class="d-flex flex-start align-center">
-        <v-btn style="margin-left: 48px; font-size: 24px" :to="'/random2'"
-          >무시하고 지나간다.</v-btn
-        >
+        <v-btn style="margin-left: 48px; font-size: 24px" :to="'/gugudan'">
+          구구단 문제?
+        </v-btn>
       </v-col>
     </v-row>
   </div>
@@ -57,7 +54,9 @@ export default {
   data() {
     return {
       storyText: [
-        ["지나가다가 병원을 발견하였습니다.\n구급약을 구할수있을거같습니다."],
+        [
+          "당신은 텅 비어있는 경찰서를 발견했습니다.\n좀비와 상대할려면 총이 필요할거같습니다. \n당신은 경찰서에서 잠겨있는 무기고를 발견합니다.\n잠겨있는 무기고를 열려면 보안실 컴퓨터 퀴즈를 풀어야합니다...",
+        ],
       ],
       paragraphIndex: 0,
     };
